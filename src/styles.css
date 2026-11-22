@@ -1,0 +1,229 @@
+/*
+ * Tailwind v4 entry: config lives here, with no tailwind.config.js or PostCSS plugin.
+ * Keep every @import in this top block. Web fonts load via <link> in src/routes/__root.tsx.
+ */
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Suntech design system — "coffee house" palette.
+ * Espresso (deep brown), crema/cream surfaces, latte neutrals, caramel accent.
+ */
+
+@theme inline {
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Coffee extras */
+  --color-espresso: var(--espresso);
+  --color-espresso-foreground: var(--espresso-foreground);
+  --color-mocha: var(--mocha);
+  --color-latte: var(--latte);
+  --color-crema: var(--crema);
+  --color-caramel: var(--caramel);
+  --color-caramel-foreground: var(--caramel-foreground);
+  --color-placeholder: var(--placeholder);
+  --color-placeholder-foreground: var(--placeholder-foreground);
+
+  --shadow-soft: var(--shadow-soft);
+  --shadow-lift: var(--shadow-lift);
+}
+
+:root {
+  --radius: 1rem;
+
+  --espresso: oklch(0.23 0.032 45);
+  --espresso-foreground: oklch(0.96 0.015 75);
+  --mocha: oklch(0.42 0.065 48);
+  --latte: oklch(0.9 0.03 70);
+  --crema: oklch(0.975 0.012 75);
+  --caramel: oklch(0.79 0.145 70);
+  --caramel-foreground: oklch(0.23 0.032 45);
+  --placeholder: oklch(0.93 0.06 85);
+  --placeholder-foreground: oklch(0.38 0.08 55);
+
+  --background: var(--crema);
+  --foreground: oklch(0.24 0.03 45);
+  --card: oklch(0.99 0.006 75);
+  --card-foreground: oklch(0.24 0.03 45);
+  --popover: oklch(0.99 0.006 75);
+  --popover-foreground: oklch(0.24 0.03 45);
+  --primary: var(--espresso);
+  --primary-foreground: var(--espresso-foreground);
+  --secondary: oklch(0.94 0.02 72);
+  --secondary-foreground: oklch(0.28 0.035 45);
+  --muted: oklch(0.94 0.02 72);
+  --muted-foreground: oklch(0.47 0.035 50);
+  --accent: oklch(0.92 0.04 72);
+  --accent-foreground: oklch(0.24 0.03 45);
+  --destructive: oklch(0.55 0.2 28);
+  --destructive-foreground: oklch(0.98 0.01 75);
+  --border: oklch(0.88 0.025 68);
+  --input: oklch(0.86 0.028 68);
+  --ring: var(--caramel);
+  --chart-1: var(--caramel);
+  --chart-2: var(--mocha);
+  --chart-3: var(--espresso);
+  --chart-4: var(--latte);
+  --chart-5: oklch(0.6 0.1 55);
+  --sidebar: var(--crema);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--espresso);
+  --sidebar-primary-foreground: var(--espresso-foreground);
+  --sidebar-accent: var(--secondary);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+
+  --gradient-hero: linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--crema) 96%, transparent) 0%,
+    color-mix(in oklab, var(--crema) 82%, transparent) 45%,
+    color-mix(in oklab, var(--crema) 20%, transparent) 100%
+  );
+  --gradient-hero-mobile: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--crema) 15%, transparent) 0%,
+    color-mix(in oklab, var(--crema) 80%, transparent) 40%,
+    color-mix(in oklab, var(--crema) 94%, transparent) 75%
+  );
+  --gradient-espresso: linear-gradient(135deg, var(--espresso), oklch(0.32 0.05 48));
+  --shadow-soft: 0 10px 30px -14px color-mix(in oklab, var(--espresso) 30%, transparent);
+  --shadow-lift: 0 24px 48px -20px color-mix(in oklab, var(--espresso) 45%, transparent);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+}
+
+@utility bg-hero-fade {
+  background-image: var(--gradient-hero-mobile);
+  @media (width >= 48rem) {
+    background-image: var(--gradient-hero);
+  }
+}
+
+@utility bg-espresso-gradient {
+  background-image: var(--gradient-espresso);
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mocha);
+}
+
+@utility container-site {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility prose-legal {
+  & h2 {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--foreground);
+  }
+  & p,
+  & li {
+    color: var(--muted-foreground);
+    line-height: 1.75;
+  }
+  & p {
+    margin-bottom: 1rem;
+  }
+  & ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  & li {
+    margin-bottom: 0.4rem;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-rise {
+  animation: rise-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
